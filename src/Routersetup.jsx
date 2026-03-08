@@ -18,6 +18,7 @@ import ChoosePage from "./Components/ChoosePage";
 import ReanterBuyer from "./Components/RenterBuyerPage";
 import ProfilePage from "./Renter/ProfilePage";
 import Galary from "./Card/Galary";
+import Conversations from "./Renter/Conversation";
 
 
 const router = createBrowserRouter([
@@ -47,7 +48,14 @@ const router = createBrowserRouter([
           { path: "overview", element: <ProfilePage /> },
           { path: "posts", element: <Posts /> },
           { path: "payments", element: <Payments /> },
-          { path: "chats", element: <Chats /> },
+          { path: "chats", 
+            element: <Chats />,
+            children: [
+              {path: 'chat/:conversation_id', element: <Conversations/>}
+            ]
+          },
+
+
           { path: "settings", element: <Settings /> },
           { path: "addpost", element: <AddPost /> },
         ],

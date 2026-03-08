@@ -5,13 +5,13 @@ const BASE_URL = "http://127.0.0.1:8000/api/"
 const REGISTER_URL = `${BASE_URL}register/`
 // const RESFRESH_URL = `${BASE_URL}token/refresh/`
 // const AUTH_URL = `${BASE_URL}authenticated/`
-export const MAIN_URL = "http://127.0.0.1:8000/"
+export const MAIN_URL = "http://127.0.0.1:8000"
 
 
 
 const api = axios.create({
     baseURL: MAIN_URL,
-    
+    withCredentials: true,
 })
 export default api
 

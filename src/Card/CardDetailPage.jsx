@@ -84,28 +84,38 @@ export default function CardDetailPage() {
 
 
 
-    const increase = () => {
-      if (home.images.length)
-      setindexnum(prev => (prev + 1) % (home.images?.length || 1))
-    }
-
-    const decrease = () => {
-      setindexnum(prev => (prev - 1 + (home.images?.length || 1)) % (home.images?.length || 1))
-    }
     
     
-
-
+    
     useEffect(function(){
-        api.get(`home/${id}`)
-        .then(res => {
-            console.log(res.data)
-            sethome(res.data)
-        })
-        .catch(err => {
-            console.log(err.message)
-        })
+      api.get(`home/${id}`)
+      .then(res => {
+        console.log(res.data)
+        console.log(res.data.user.id)
+
+        sethome(res.data)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
     }, [id])
+
+
+const MessageChat = async () => {
+  try {
+
+    const res = await api.post(
+      "private_conversation",
+      { user_id: home.user },
+      { withCredentials: true }
+    );
+
+
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
 
     const cards = [
       { id: 1, name: 'Djosseff', who: 'Content for card 1', decription: "They are great and all hzfvzdfvelping me, i am super with behavior.", img: self },
@@ -353,7 +363,7 @@ export default function CardDetailPage() {
           {/* Card of Owner */}
             <div className="w-auto h-[300px] border-2 flex flex-col items-center justify-center p-2 gap-1 lg:sticky lg:top-24 space-y-3">
               <img className="rounded-full w-20 h-20" src={self} alt="" />
-              <h1 className="text-2xl font-bold">{home.user}</h1>
+              <h1 className="text-2xl font-bold">{home.username}</h1>
               <p className="text-gray-300">AGENT</p>
 
               {/* Location */}
@@ -366,10 +376,10 @@ export default function CardDetailPage() {
               <div className="flex gap-4">
 
                 {/* Message */}
-                <div className="flex items-center bg-indigo-400 text-white w-full p-2 rounded-[5px] gap-2">
+                <button onClick={MessageChat} className="flex items-center bg-indigo-400 cursor-pointer text-white w-full p-2 rounded-[5px] gap-2">
                   <LuMessageCircleMore/>
                   <h1>Message</h1>
-                </div>
+                </button>
 
                 {/* Call */}
                 <div className="flex items-center gap-2 bg-green-500 text-white w-full p-2 rounded-[5px]">
@@ -389,85 +399,6 @@ export default function CardDetailPage() {
       </div>
     )
 }
-
-
-{/* <div className="relative rounded-xl overflow-hidden h-64 md:h-80 ">
-<img
-    src={home.images?.[0] ? `${MAIN_URL}${home.images[indexnum].image}` : "No image"}
-    alt="Product"
-    className="w-full h-full object-cover"
-        />
-<button className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold bg-white/70 px-2 rounded cursor-pointer" onClick={decrease}><GoChevronLeft/></button>
-<button className="absolute right-4 top-1/2 -translate-y-1/2 text-2xl font-bold bg-white/70 px-2 rounded cursor-pointer" onClick={increase}><GoChevronRight/></button>
-<button className="absolute bottom-3 right-3 bg-white p-1 rounded shadow text-sm"><MdZoomOutMap/></button>
-</div>
-import React, { useRef } from 'react';
-
-const ScrollingCards = () => {
-  const scrollRef = useRef(null);
-  const scrollAmount = 300; // Adjust this value based on your card width and desired scroll distance
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      if (direction === 'left') {
-        scrollRef.current.scrollLeft -= scrollAmount;
-      } else {
-        scrollRef.current.scrollLeft += scrollAmount;
-      }
-    }
-  };
-
-  // Dummy data for the cards
-  const cards = [
-    { id: 1, title: 'Card 1', content: 'Content for card 1' },
-    { id: 2, title: 'Card 2', content: 'Content for card 2' },
-    { id: 3, title: 'Card 3', content: 'Content for card 3' },
-    { id: 4, title: 'Card 4', content: 'Content for card 4' },
-    { id: 5, title: 'Card 5', content: 'Content for card 5' },
-    { id: 6, title: 'Card 6', content: 'Content for card 6' },
-    { id: 7, title: 'Card 7', content: 'Content for card 7' },
-  ];
-
-  return (
-    <div className="relative">
-      {/* Left Button */}
-//       <button
-//         onClick={() => scroll('left')}
-//         className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-//         aria-label="Scroll Left"
-//       >
-//         &lt;
-//       </button>
-
-//       {/* Scrolling Container */}
-//       <div
-//         ref={scrollRef}
-//         className="flex overflow-x-auto space-x-4 p-4 scroll-smooth scrollbar-hide"
-//         // Hide scrollbar utility (requires custom CSS or a PostCSS plugin for full cross-browser compatibility)
-//       >
-//         {cards.map((card) => (
-//           <div key={card.id} className="flex-shrink-0 w-64 p-4 bg-gray-100 rounded-lg shadow-md">
-//             <h3 className="text-lg font-semibold">{card.title}</h3>
-//             <p>{card.content}</p>
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* Right Button */}
-//       <button
-//         onClick={() => scroll('right')}
-//         className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-//         aria-label="Scroll Right"
-//       >
-//         &gt;
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default ScrollingCards;
-
-
 
 
 
