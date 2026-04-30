@@ -1,5 +1,5 @@
 import axios from 'axios'                   
-const BASE_URL = "http://127.0.0.1:8000/api/"
+const BASE_URL = `${MAIN_URL}/api/`
 export const MAIN_URL = import.meta.env.VITE_API_URL;
 // const LOGIN_URL = `${BASE_URL}token/`
 // const LOGOUT_URL = `${BASE_URL}logout/`
