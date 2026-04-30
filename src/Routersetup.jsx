@@ -12,7 +12,7 @@ import { Menu } from "./Components/Menu";
 import Payments from "./Renter/payments";
 import Chats from "./Renter/Chats";
 import Settings from "./Renter/Settings";
-import AddPost from "./Renter/AddPost";
+import CreateHome from "./Renter/CreateHome";
 import Privetrouter from "./privet_roter";
 import ChoosePage from "./Components/ChoosePage";
 import ReanterBuyer from "./Components/RenterBuyerPage";
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
 
 
           { path: "settings", element: <Settings /> },
-          { path: "addpost", element: <AddPost /> },
+          { path: "createHome", element: <CreateHome /> },
         ],
       },
     ],

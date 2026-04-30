@@ -53,8 +53,8 @@ function Navbar() {
 
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 backdrop-blur-lg border-b bg-blue-950 shadow-lg">
-      <div className="max-w-[1400px] w-full mx-auto px-4">
+    <nav className="fixed top-5 left-1/2 -translate-x-1/2 w-full max-w-[1400px] z-40">
+      <div className="mx-4 rounded-[10px] backdrop-blur-lg bg-blue-950/90 border border-blue-900 shadow-lg">
         <div className="flex justify-between items-center h-13 mx-10">
           <a href="/" className="font-mono text-xl font-bold text-white">
             Home<span className="text-blue-500">.rent</span>

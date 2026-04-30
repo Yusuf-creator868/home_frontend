@@ -20,7 +20,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col mt-20 gap-6 max-w-[1400px] mx-auto">
+    <div className="flex flex-col mt-20 gap-6 max-w-[1400px] mx-auto bg-[#f5f5f5]">
       {/* Search bar */}
 
       <Navbar/>

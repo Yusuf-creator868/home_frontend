@@ -12,78 +12,91 @@ export const Profile = () => {
   const location = useLocation();
   const currentTab = location.pathname.split("/")[2];
 
+  const [collapsed, setCollapsed] = useState(false);
+
   const linkStyle = (name) =>
     currentTab === name
-      ? "text-white flex justify-center items-center gap-3 cursor-pointer"
-      : "text-gray-300 hover:text-white flex justify-center items-center gap-3 cursor-pointer";
+      ? "bg-blue-600 text-white shadow-lg flex items-center gap-3 px-4 py-3 rounded-xl w-full transition-all duration-300"
+      : "text-gray-300 hover:text-white hover:bg-white/10 flex items-center gap-3 px-4 py-3 rounded-xl w-full transition-all duration-300";
 
   return (
-    
     <div className="flex bg-gradient-to-br from-slate-50 to-slate-200 min-h-screen">
 
-      <div className="flex flex-col items-center justify-between w-[300px] border-2 h-screen fixed p-5 text-white bg-blue-950 rounded-2xl">
+      {/* Sidebar */}
+      <div
+        className={`flex flex-col justify-between h-screen fixed p-5 text-white bg-blue-950 rounded-r-3xl shadow-2xl transition-all duration-300 ${collapsed ? "w-[95px]" : "w-[300px]"
+          }`}
+      >
+        {/* Top */}
+        <div className="flex flex-col items-start text-[20px] space-y-3 w-full">
 
-        <div className="flex flex-col items-start text-[20px] space-y-3">
-          <h1 className="text-4xl mb-20">Home<span className="text-blue-500">.uz</span></h1>
+          {/* Logo + Toggle */}
+          <div className="flex items-center justify-between w-full mb-16">
+            {!collapsed && (
+              <h1 className="text-4xl font-bold tracking-wide">
+                Home<span className="text-blue-500">.uz</span>
+              </h1>
+            )}
 
-          <div className={linkStyle("overview")}>
-            <GrOverview/>
-            <Link to="overview" >Overview</Link>
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              className="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-xl transition"
+            >
+              {collapsed ? "➜" : "⬅"}
+            </button>
           </div>
 
-          <div  className={linkStyle("posts")}>
-            <IoHomeOutline/>
-            <Link to="posts" >Listings</Link>
-          </div>
+          {/* Links */}
+          <Link to="overview" className={linkStyle("overview")}>
+            <GrOverview className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Overview</span>}
+          </Link>
 
-          <div className={linkStyle("payments")}>
-            <MdPayment/>
-            <Link to="payments">Payments</Link>
-          </div>
+          <Link to="posts" className={linkStyle("posts")}>
+            <IoHomeOutline className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Listings</span>}
+          </Link>
 
-          <div className={linkStyle("chats")}>
-            <BsChatSquareDots/>
-            <Link to="chats">Chat</Link>
-          </div>
+          <Link to="payments" className={linkStyle("payments")}>
+            <MdPayment className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Payments</span>}
+          </Link>
 
-          <div  className={linkStyle("agents")}>
-            <BsPersonVcard/>
-            <Link to="agents">Agents</Link>
-          </div>
+          <Link to="chats" className={linkStyle("chats")}>
+            <BsChatSquareDots className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Chat</span>}
+          </Link>
 
+          <Link to="agents" className={linkStyle("agents")}>
+            <BsPersonVcard className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Agents</span>}
+          </Link>
         </div>
 
+        {/* Bottom */}
+        <div className="flex flex-col items-start text-[20px] space-y-3 w-full">
 
+          <Link to="messages" className={linkStyle("messages")}>
+            <LuMessageSquarePlus className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Messages</span>}
+          </Link>
 
-        <div className="flex flex-col items-start text-[20px] space-y-3">
-
-          <div className={linkStyle("messages")}>
-            <LuMessageSquarePlus/>
-            <Link to="messages" >Messages</Link>
-            <p className="bg-amber-700 rounded-full w-8 h-8 text-center">4</p>
-          </div>
-
-          <div className={linkStyle("settings")}>
-            <IoSettingsOutline/>
-            <Link to="settings">Settings</Link>
-          </div>
-         
+          <Link to="settings" className={linkStyle("settings")}>
+            <IoSettingsOutline className="text-xl min-w-[22px]" />
+            {!collapsed && <span>Settings</span>}
+          </Link>
         </div>
-
       </div>
-      
 
-
-
-    <div className="ml-[320px] mr-[10px] mt-2 max-w-[1300px] w-full rounded-2xl shadow-md shadow-black/70">
-
-
-      <div className="mt-10">
-        <Outlet />
+      {/* Content */}
+      <div
+        className={`w-full mr-[10px] transition-all duration-300 ${collapsed ? "ml-[115px]" : "ml-[320px]"
+          }`}
+      >
+        <div className="mt-10">
+          <Outlet />
+        </div>
       </div>
     </div>
-
-
-  </div>
   );
 };

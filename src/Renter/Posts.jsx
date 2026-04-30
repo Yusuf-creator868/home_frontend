@@ -34,7 +34,7 @@ function Posts() {
                 <Userhomes id={post.id} posts={post} />
             ))}
 
-            <Link to="/profile/addpost" className="my-30 px-10 cursor-pointer border border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white transition-colors duration-200 rounded-md">Add Post</Link>
+            <Link to="/profile/createHome" className="my-30 px-10 cursor-pointer border border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white transition-colors duration-200 rounded-md">Add Post</Link>
         </div>
     )
 }

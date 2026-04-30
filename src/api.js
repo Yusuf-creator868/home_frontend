@@ -1,12 +1,13 @@
 import axios from 'axios'                   
 const BASE_URL = "http://127.0.0.1:8000/api/"
+export const MAIN_URL = import.meta.env.VITE_API_URL;
 // const LOGIN_URL = `${BASE_URL}token/`
 // const LOGOUT_URL = `${BASE_URL}logout/`
 const REGISTER_URL = `${BASE_URL}register/`
 // const RESFRESH_URL = `${BASE_URL}token/refresh/`
 // const AUTH_URL = `${BASE_URL}authenticated/`
-export const MAIN_URL = "http://127.0.0.1:8000"
-
+// export const MAIN_URL = "http://127.0.0.1:8000"
+axios.defaults.withCredentials = true;
 
 
 const api = axios.create({
