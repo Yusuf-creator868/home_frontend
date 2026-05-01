@@ -66,23 +66,23 @@ function Navbar() {
             </a>
 
             {Auth ? null : (
-              <a href="/login" className="text-gray-300 hover:text-blue-400 transition-colors">
+              <button onClick={() => nav("/login") } className="text-gray-300 hover:text-blue-400 transition-colors">
                 Login
-              </a>
+              </button>
             )}
             {Auth ? null : (
-              <a href="/register" className="text-gray-300 hover:text-blue-400 transition-colors">
+              <button onClick={() => nav("/register") } className="text-gray-300 hover:text-blue-400 transition-colors">
                 Register
-              </a>
+              </button>
             )}
 
-            <a href="/favorites" className="text-gray-300 hover:text-blue-300 transition-colors">
+            <button onClick={() => nav("/favorites") }  className="text-gray-300 hover:text-blue-300 transition-colors">
               <FaHeart />
-            </a>
+            </button>
 
-            <a href="#home" className="text-gray-300 hover:text-blue-300 transition-colors">
+            <button href="#home" className="text-gray-300 hover:text-blue-300 transition-colors">
               <FaBell />
-            </a>
+            </button>
 
             {/* WRAPPER: both trigger and dropdown inside same element */}
             <div
