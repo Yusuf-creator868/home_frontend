@@ -1,6 +1,6 @@
 import axios from 'axios'                   
-const BASE_URL = `${MAIN_URL}/api/`
 export const MAIN_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = `${MAIN_URL}/api/`
 // const LOGIN_URL = `${BASE_URL}token/`
 // const LOGOUT_URL = `${BASE_URL}logout/`
 const REGISTER_URL = `${BASE_URL}register/`
