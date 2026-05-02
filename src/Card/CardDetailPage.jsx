@@ -159,7 +159,7 @@ export default function CardDetailPage() {
         `}
             >
               <img
-                src={`${MAIN_URL}${img.image}`}
+                src={`${img.image}`}
                 alt=""
                 className="w-full h-full object-cover rounded-2xl"
               />
