@@ -59,7 +59,7 @@ export default function Card({ item }) {
 
         <div className="w-full h-56 bg-gray-100 overflow-hidden mt-2">
           <img
-            src={`${MAIN_URL}${item.first_image}`}
+            src={`${item.first_image}`}
             alt={name}
             className="w-full h-full object-cover rounded-[10px]" />
         </div>
