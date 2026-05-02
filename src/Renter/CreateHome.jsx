@@ -33,13 +33,33 @@ export default function CreateHome() {
         next();
     };
 
-    const uploadImages = async (files) => {
-        const formData = new FormData();
-        files.forEach((f) => formData.append("images", f));
+    // const uploadImages = async (files) => {
+    //     const formData = new FormData();
+    //     files.forEach((f) => formData.append("images", f));
 
-        await api.post(`/uploadimage_home/${homeId}`, formData);
-        next();
-    };
+    //     await api.post(`/uploadimage_home/${homeId}`, formData);
+    //     next();
+    // };
+
+    const uploadImages = async (files) => {
+    const formData = new FormData();
+
+    files.forEach((f) => {
+        formData.append("images", f);
+    });
+
+    await api.post(
+        `/uploadimage_home/${homeId}`,
+        formData,
+        {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        }
+    );
+
+    next();
+};
 
     const publish = async () => {
         await api.post(`/upload_home/${homeId}`);
