@@ -15,7 +15,7 @@ const FavCartItem = ({ item, onDelete }) => {
         {/* Image + Info */}
         <div className="flex items-center">
           <img
-            src={`${MAIN_URL}${item.homes.first_image}`}
+            src={`${item.homes.first_image}`}
             alt={item.homes.name}
             className="w-20 h-20 object-cover rounded-lg"
           />

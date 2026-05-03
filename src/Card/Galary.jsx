@@ -56,7 +56,7 @@ const Galary = () => {
     
               <div className="max-w-[900px] min-w-[380px] mx-auto">
                   <img
-                        src={`${MAIN_URL}${images?.images?.[index]?.image}`}
+                        src={`${images?.images?.[index]?.image}`}
                         className=" w-full h-full object-cover"
                         alt=""
                   />
@@ -81,7 +81,7 @@ const Galary = () => {
               >
                 <img
                   className="w-full h-full object-cover "
-                  src={`${MAIN_URL}${img.image}`}
+                  src={`${img.image}`}
                   alt=""
                 />
               </div>
