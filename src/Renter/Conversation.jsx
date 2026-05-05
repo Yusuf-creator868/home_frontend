@@ -10,6 +10,7 @@ import { IoSend } from "react-icons/io5";
 import api from '../api'
 import Message from "./Messages";
 import { useParams } from "react-router-dom";
+import { MAIN_URL } from "../api";
 
 
 function getCookie(name) {
@@ -39,7 +40,7 @@ const Conversations = () => {
 
         const accessToken = getCookie('access_token')
         // console.log("Sending token:", accessToken);
-        socketRef.current = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${conversation_id}/`)
+        socketRef.current = new WebSocket(`ws://${MAIN_URL}/ws/chat/${conversation_id}/`)
 
         socketRef.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
