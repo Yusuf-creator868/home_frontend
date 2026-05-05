@@ -40,7 +40,7 @@ const Conversations = () => {
 
         const accessToken = getCookie('access_token')
         // console.log("Sending token:", accessToken);
-        socketRef.current = new WebSocket(`ws://${MAIN_URL}/ws/chat/${conversation_id}/`)
+        socketRef.current = new WebSocket(`wss://${MAIN_URL}/ws/chat/${conversation_id}/`)
 
         socketRef.current.onmessage = (event) => {
             const data = JSON.parse(event.data)
