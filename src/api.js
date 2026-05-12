@@ -24,6 +24,8 @@ export const apiurl = axios.create({
     
 })
 
+console.log("API:", MAIN_URL);
+
 
 export const login = async (username, password) => {
         const response = await apiurl.post(
